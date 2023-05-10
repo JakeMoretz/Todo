@@ -1,3 +1,4 @@
 import "./index.css";
+import "./handlers";
+import "./dom";
 
-console.log("AHHHHH");
