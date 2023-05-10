@@ -15,7 +15,7 @@
   \*************************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://todo/./src/handlers.js?");
+eval("// add project card/folder\nconst newProjectButton = document.querySelector('.new-project-btn');\nconst projects = document.querySelector('.projects');\nconst projectName = document.querySelector('input');\n\nnewProjectButton.addEventListener('click', () => {\n    const projectDiv = document.createElement('div');\n    projectDiv.className = 'project-card';\n    projectDiv.textContent = projectName.value;\n    projects.appendChild(projectDiv);\n\n    clearInput();\n});\n\nfunction clearInput() {\n    projectName.value = '';\n}\n\n\n//# sourceURL=webpack://todo/./src/handlers.js?");
 
 /***/ })
 
