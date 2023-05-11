@@ -53,7 +53,7 @@ body {
 .new-project-title {
     font-size: 2em;
     font-family: 'Barlow Condensed', sans-serif;
-    padding-top: 13px;
+    padding-top: 15px;
 }
 
 .new-project-btn {
@@ -83,14 +83,16 @@ hr {
 }
 
 .project-card {
-    height: 100px;
+    height: 80px;
     border-radius: 10px;
     box-shadow: 3px 0 1em rgb(212, 212, 212);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     font-size: 1.7em;
     padding: 10px;
+    padding-top: 30px;
+    flex-direction: column;
 }
 
 input.input {
@@ -112,10 +114,38 @@ input {
     border: 1px solid rgb(0, 0, 0, 0.3);
 }
 
+
+
+.deleteBtn {
+    border: none;
+    background-color: transparent;
+    color: red;
+    font-size: .7em;
+  
+}
+
+
+/* main section */
+
 .main {
     /* background-color: rgb(241, 241, 241); */
     grid-column: 2/5;
     grid-row: 2/8;
+    display: grid;
     border-radius: 10px;
     box-shadow: 2px 0 1em rgb(212, 212, 212);
+    grid-template-rows: repeat(auto-fill, minmax(1fr));;
+}
+
+
+
+
+.test {
+    /* background-color: pink; */
+    height: 100px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 0 1em rgb(212, 212, 212);
+   
+
 }
