@@ -9,3 +9,11 @@ export const addButtonEventListener = () => {
         addToDo();
     });
 };
+
+
+// export const removeButtonListener = () => {
+//     const testBtn = document.querySelector('.test-btn')
+//     testBtn.addButtonEventListener('click', () => {
+//         newDiv.remove();
+//     })
+// }
