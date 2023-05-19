@@ -1,19 +1,17 @@
 import './index.js';
-import { addToDo } from './index.js';
+import { addToDo, clear } from './index.js';
 
 // event listener for adding a todo
 export const addButtonEventListener = () => {
     const addButton = document.querySelector('.new-project-btn');
     addButton.addEventListener('click', (event) => {
         event.preventDefault();
-        addToDo();
+        let inputData = document.querySelector('#description').value;
+        if (inputData === '') {
+            newDiv.style.display = 'none';
+        } else {
+            addToDo();
+            clear();
+        }
     });
 };
-
-
-// export const removeButtonListener = () => {
-//     const testBtn = document.querySelector('.test-btn')
-//     testBtn.addButtonEventListener('click', () => {
-//         newDiv.remove();
-//     })
-// }

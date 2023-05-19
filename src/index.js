@@ -1,6 +1,5 @@
 import './index.css';
-// import "./handlers";
-import { addButtonEventListener, removeButtonListener } from './handlers';
+import { addButtonEventListener, checkedBoxListener } from './handlers';
 
 const card = document.querySelector('.main');
 
@@ -17,14 +16,13 @@ function displayToDo() {
         let newDiv = document.createElement('div');
         let para1 = document.createElement('p');
         let para2 = document.createElement('p');
-        
 
         let checkbox = document.createElement('INPUT');
         checkbox.setAttribute('type', 'checkbox');
-        // checkbox.setAttribute('class', 'check-box');
+        checkbox.setAttribute('id', 'check-box');
 
         let testBtn = document.createElement('button');
-        testBtn.textContent = 'Remove'
+        testBtn.textContent = 'Remove';
         testBtn.className = 'test-btn';
 
         let toDoDescription = document.createTextNode(`${todo.description}`);
@@ -48,10 +46,24 @@ function displayToDo() {
         newDiv.appendChild(testBtn);
 
         card.appendChild(newDiv);
+
+        testBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            const index = toDoList.indexOf(todo);
+            if (index > -1) {
+                toDoList.splice(index, 1);
+                displayToDo();
+            }
+        });
+
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+                para1.style.textDecoration = 'line-through';
+            } else {
+            }
+        });
     });
 }
-
-// displayToDo();
 
 export function addToDo() {
     let description = document.getElementById('description').value;
@@ -64,5 +76,9 @@ export function addToDo() {
     displayToDo();
 }
 
+export function clear() {
+    description.value = '';
+    dueDate.value = '';
+}
+
 addButtonEventListener();
-// removeButtonListener();
