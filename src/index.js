@@ -1,5 +1,5 @@
 import './index.css';
-import { addButtonEventListener, checkedBoxListener } from './handlers';
+import { addButtonEventListener } from './handlers';
 
 const card = document.querySelector('.main');
 
@@ -8,6 +8,7 @@ let toDoList = [];
 function ToDo(description, dueDate) {
     this.description = description;
     this.dueDate = dueDate;
+    
 }
 
 function displayToDo() {
@@ -19,7 +20,7 @@ function displayToDo() {
 
         let checkbox = document.createElement('INPUT');
         checkbox.setAttribute('type', 'checkbox');
-        checkbox.setAttribute('id', 'check-box');
+        // checkbox.setAttribute('checkbox', 'checked');
 
         let testBtn = document.createElement('button');
         testBtn.textContent = 'Remove';
@@ -53,16 +54,26 @@ function displayToDo() {
             if (index > -1) {
                 toDoList.splice(index, 1);
                 displayToDo();
+                saveToLocalStorage();
             }
         });
 
         checkbox.addEventListener('change', () => {
             if (checkbox.checked) {
                 para1.style.textDecoration = 'line-through';
+               
             } else {
+                para1.style.textDecoration = 'none';
             }
+           
+            saveToLocalStorage()
         });
+
+    
+     
+
     });
+
 }
 
 export function addToDo() {
@@ -72,6 +83,7 @@ export function addToDo() {
     let newToDo = new ToDo(description, dueDate);
 
     toDoList.push(newToDo);
+    saveToLocalStorage();
 
     displayToDo();
 }
@@ -81,4 +93,22 @@ export function clear() {
     dueDate.value = '';
 }
 
+
+
+
+function saveToLocalStorage() {
+    localStorage.setItem('toDoList', JSON.stringify(toDoList));
+    
+    
+  }
+  
+  function retrieveFromLocalStorage() {
+    const storedToDoList = localStorage.getItem('toDoList');
+    if (storedToDoList) {
+      toDoList = JSON.parse(storedToDoList);
+      displayToDo();
+    }
+  }
+
 addButtonEventListener();
+retrieveFromLocalStorage();
