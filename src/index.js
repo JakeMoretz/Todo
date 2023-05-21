@@ -8,7 +8,6 @@ let toDoList = [];
 function ToDo(description, dueDate) {
     this.description = description;
     this.dueDate = dueDate;
-    
 }
 
 function displayToDo() {
@@ -20,7 +19,6 @@ function displayToDo() {
 
         let checkbox = document.createElement('INPUT');
         checkbox.setAttribute('type', 'checkbox');
-        // checkbox.setAttribute('checkbox', 'checked');
 
         let testBtn = document.createElement('button');
         testBtn.textContent = 'Remove';
@@ -61,19 +59,12 @@ function displayToDo() {
         checkbox.addEventListener('change', () => {
             if (checkbox.checked) {
                 para1.style.textDecoration = 'line-through';
-               
             } else {
                 para1.style.textDecoration = 'none';
             }
-           
-            saveToLocalStorage()
         });
-
-    
-     
-
+        saveToLocalStorage();
     });
-
 }
 
 export function addToDo() {
@@ -93,22 +84,17 @@ export function clear() {
     dueDate.value = '';
 }
 
-
-
-
-function saveToLocalStorage() {
+ export function saveToLocalStorage() {
     localStorage.setItem('toDoList', JSON.stringify(toDoList));
-    
-    
-  }
-  
-  function retrieveFromLocalStorage() {
+}
+
+function retrieveFromLocalStorage() {
     const storedToDoList = localStorage.getItem('toDoList');
     if (storedToDoList) {
-      toDoList = JSON.parse(storedToDoList);
-      displayToDo();
+        toDoList = JSON.parse(storedToDoList);
+        displayToDo();
     }
-  }
+}
 
 addButtonEventListener();
 retrieveFromLocalStorage();
